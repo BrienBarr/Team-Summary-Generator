@@ -16,12 +16,6 @@ const render = require("./lib/htmlRenderer");
 
 let questions = [
     {
-        type: 'confirm',
-        message: 'Do you want to add a team member?',
-        name: 'add',
-    },
-    {
-        when: (response) => response.add === true,
         type: 'input',
         message: 'Team Member Last Name:',
         name: 'lastName',
@@ -39,19 +33,31 @@ let questions = [
             "Employee",
             "Engineer",
             "Intern",
-            new inquirer.Separator( "-- End of List --" )
         ],
+        loop: false,
         name: 'role'
+    },
+    {
+        type: 'confirm',
+        message: 'Do you want to add a team member?',
+        name: 'add',
     }
 ];
 
-inquirer
-    .prompt(
-        questions
-    )
-    .then((response) => 
-        console.log(response)
-    )
+// const init = () => {
+    inquirer
+        .prompt(
+            questions
+        )
+        .then((response) => {
+            console.log(response)
+            // if (response.add === true){
+            //     init();
+            // }
+        })
+// };
+
+// init();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
