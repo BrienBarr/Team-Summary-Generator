@@ -15,53 +15,156 @@ const render = require("./lib/htmlRenderer");
 // and to create objects for each team member (using the correct classes as blueprints!)
 
 let team = [];
+let member;
 
-let questions = [
+const questions = [
     {
         type: 'input',
-        message: 'Team Member Last Name:',
-        name: 'lastName',
+        message: "What is the team manager's name?",
+        name: 'name',
     },
     {
         type: 'input',
-        message: 'Team Member First Name:',
-        name: 'firstName'
+        message: "What is the team manager's ID?",
+        name: 'id',
+    },
+    {
+        type: 'input',
+        message: "What is the team manager's email address?",
+        name: 'email',
+    },
+    {
+        type: 'input',
+        message: "What is the team manager's office number?",
+        name: 'officeNumber',
     },
     {
         type: 'list',
-        message: 'What is the role of this team member?',
+        message: 'Do you want to add a team member?',
         choices: [
-            "Manager",
-            "Employee",
             "Engineer",
             "Intern",
+            "Done"
         ],
         loop: false,
-        name: 'role'
-    },
-    {
-        type: 'confirm',
-        message: 'Do you want to add a team member?',
-        name: 'add',
+        name: 'add'
     }
 ];
 
-const init = () => {
+const engineerQuestions = [
+    {
+        type: 'input',
+        message: "What is the engineer's name?",
+        name: 'name',
+    },
+    {
+        type: 'input',
+        message: "What is the engineer's ID?",
+        name: 'id',
+    },
+    {
+        type: 'input',
+        message: "What is the engineer's email address?",
+        name: 'email',
+    },
+    {
+        type: 'input',
+        message: "What is the engineer's GitHub username?",
+        name: 'github',
+    },
+    {
+        type: 'list',
+        message: 'Do you want to add a team member?',
+        choices: [
+            "Engineer",
+            "Intern",
+            "Done"
+        ],
+        loop: false,
+        name: 'add'
+    }
+]
+
+const internQuestions = [
+    {
+        type: 'input',
+        message: "What is the intern's name?",
+        name: 'name',
+    },
+    {
+        type: 'input',
+        message: "What is the intern's ID?",
+        name: 'id',
+    },
+    {
+        type: 'input',
+        message: "What is the intern's email address?",
+        name: 'email',
+    },
+    {
+        type: 'input',
+        message: "What is the intern's school?",
+        name: 'school',
+    },
+    {
+        type: 'list',
+        message: 'Do you want to add a team member?',
+        choices: [
+            "Engineer",
+            "Intern",
+            "Done"
+        ],
+        loop: false,
+        name: 'add'
+    }
+]
+
+const userPrompt = (questions) => {
     inquirer
         .prompt(
             questions
         )
         .then((response) => {
-            console.log(response);
-            team.push(response);
-            console.log(team);
-            if (response.add === true){
-                init();
+            // console.log(response);
+            switch (questions){
+                case engineerQuestions:
+                    response.role = "Engineer";
+                    member = new Engineer (response.name, response.id, response.email, response.github);
+                    team.push(member);
+                    console.log(team);
+                    break;
+
+                case internQuestions:
+                    response.role = "Intern";
+                    member = new Intern (response.name, response.id, response.email, response.school);
+                    team.push(member);
+                    console.log(team);
+                    break;
+
+                default: 
+                    response.role = "Manager";
+                    member = new Manager (response.name, response.id, response.email, response.officeNumber);
+                    team.push(member);
+                    console.log(team);
             }
+            
+            switch (response.add){
+                case "Engineer":
+                    userPrompt(engineerQuestions);
+                    break;
+
+                case "Intern":
+                    userPrompt(internQuestions);
+                    break;
+
+                default:
+                    return;
+            }
+
         })
 };
 
-init();
+userPrompt(questions);
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
