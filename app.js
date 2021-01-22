@@ -131,21 +131,21 @@ const userPrompt = (questions) => {
                     response.role = "Engineer";
                     employee = new Engineer (response.name, response.id, response.email, response.github);
                     employees.push(employee);
-                    console.log(employees);
+                    // console.log(employees);
                     break;
 
                 case internQuestions:
                     response.role = "Intern";
                     employee = new Intern (response.name, response.id, response.email, response.school);
                     employees.push(employee);
-                    console.log(employees);
+                    // console.log(employees);
                     break;
 
                 default: 
                     response.role = "Manager";
                     employee = new Manager (response.name, response.id, response.email, response.officeNumber);
                     employees.push(employee);
-                    console.log(employees);
+                    // console.log(employees);
             }
             
             switch (response.add){
@@ -158,7 +158,10 @@ const userPrompt = (questions) => {
                     break;
 
                 default:
-                    return;
+                    console.log(employees);
+                    const team = render(employees);
+                    console.log(team);
+                    //return team;
             }
 
         })
