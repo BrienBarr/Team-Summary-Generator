@@ -14,8 +14,8 @@ const render = require("./lib/htmlRenderer");
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-let team = [];
-let member;
+let employees = [];
+let employee;
 
 const questions = [
     {
@@ -129,23 +129,23 @@ const userPrompt = (questions) => {
             switch (questions){
                 case engineerQuestions:
                     response.role = "Engineer";
-                    member = new Engineer (response.name, response.id, response.email, response.github);
-                    team.push(member);
-                    console.log(team);
+                    employee = new Engineer (response.name, response.id, response.email, response.github);
+                    employees.push(employee);
+                    console.log(employees);
                     break;
 
                 case internQuestions:
                     response.role = "Intern";
-                    member = new Intern (response.name, response.id, response.email, response.school);
-                    team.push(member);
-                    console.log(team);
+                    employee = new Intern (response.name, response.id, response.email, response.school);
+                    employees.push(employee);
+                    console.log(employees);
                     break;
 
                 default: 
                     response.role = "Manager";
-                    member = new Manager (response.name, response.id, response.email, response.officeNumber);
-                    team.push(member);
-                    console.log(team);
+                    employee = new Manager (response.name, response.id, response.email, response.officeNumber);
+                    employees.push(employee);
+                    console.log(employees);
             }
             
             switch (response.add){
