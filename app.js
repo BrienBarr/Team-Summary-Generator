@@ -158,9 +158,9 @@ const userPrompt = (questions) => {
                     break;
 
                 default:
-                    console.log(employees);
+                    // console.log(employees);
                     const team = render(employees);
-                    console.log(team);
+                    // console.log(team);
                     fs.writeFile(outputPath, team, err => err ? err : "File Successfully Written!");
                     //return team;
             }
