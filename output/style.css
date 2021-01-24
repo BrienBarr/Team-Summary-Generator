@@ -1,20 +1,24 @@
+/* Custom styling for the team heading */
 .team-heading{
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: #35cefd;
 }
 
+/* Custom styling for the font awesome users icon in the team heading */
 .fa-users{
     margin-left: 30px;
     margin-right: 30px;
 }
 
+/* Custom styling for the employee cards */
 .card{
     margin-left: 5px;
     margin-right: 5px;
     background-color: #9ea4b3;
 }
 
+/* Custom styling for the employee card headers */
 .card-header{
     background-color: #c2fdba;
 }
