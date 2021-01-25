@@ -135,19 +135,16 @@ const userPrompt = (questions) => {
             // the set of questions asked and push that employee to the employees array
             switch (questions){
                 case engineerQuestions:
-                    response.role = "Engineer";
                     employee = new Engineer (response.name, response.id, response.email, response.github);
                     employees.push(employee);
                     break;
 
                 case internQuestions:
-                    response.role = "Intern";
                     employee = new Intern (response.name, response.id, response.email, response.school);
                     employees.push(employee);
                     break;
 
                 default: 
-                    response.role = "Manager";
                     employee = new Manager (response.name, response.id, response.email, response.officeNumber);
                     employees.push(employee);
             }
