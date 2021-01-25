@@ -168,7 +168,7 @@ const userPrompt = (questions) => {
                 // and output it to the output path
                 default:
                     const team = render(employees);
-                    fs.writeFile(outputPath, team, err => err ? err : "File Successfully Written!");
+                    fs.writeFile(outputPath, team, err => err ? err : console.log("File Successfully Written!"));
             }
 
         })
