@@ -34,7 +34,12 @@
 /* @media query for screens no larger than 430px */
 @media (max-width: 430px){
     .container-fluid h1{
-        font-size: xx-large;
+        font-size: 2rem;
+    }
+
+    .fa-users {
+        margin-left: 5px;
+        margin-right: 5px;
     }
 }
 
