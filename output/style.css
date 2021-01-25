@@ -11,15 +11,52 @@
     margin-right: 30px;
 }
 
+/* Custom styling for the columns containing cards */
+.col-sm, .col-xs-12{
+    padding: 0;
+}
+
 /* Custom styling for the employee cards */
 .card{
     margin-bottom: 10px;
     margin-left: 5px;
     margin-right: 5px;
     background-color: #9ea4b3;
+    min-width: 250px;
+    max-width: 250px;
 }
 
 /* Custom styling for the employee card headers */
 .card-header{
     background-color: #c2fdba;
 }
+
+/* @media query for screens no larger than 430px */
+@media (max-width: 430px){
+    .container-fluid h1{
+        font-size: xx-large;
+    }
+}
+
+/* @media query for screens no larger than 600px */
+@media (max-width: 600px){
+    .container-fluid{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* @media query for screens 1440px and larger */
+@media (min-width: 1440px){
+    .container {
+        max-width: 1380px;
+    }
+}
+
+/* @media query for screens 1850px and larger */
+@media (min-width: 1850px){
+    .container {
+        max-width: 1600px;
+    }
+}
+
